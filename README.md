@@ -1,5 +1,15 @@
 # Brothers
 
+## Development Notes
+
+This project is structured in features, so every new feature should have it's separate folder and module for lazy loading.
+
+## API keys for collaborators 
+
+Message me for API keys
+
+## Angular CLI Notes
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
 
 ## Development server

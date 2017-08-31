@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.panel-heading {
+  padding: 0;
+}
+
+.panel-title {
+  margin: 2px;
+}
