@@ -1,0 +1,34 @@
+#btnReady {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-inverse {
+  background-color: #333;
+  color: white;
+}
+
+.card-inverse>.card-text {
+
+}
+
+.user-card {
+  margin: 5px;
+}
+
+.user-pic {
+  width: 50px;
+  height: 50px;
+  margin: 3px;
+}
+
+.user-list {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.test {
+  padding: 0px;
+  margin: 0px;
+}

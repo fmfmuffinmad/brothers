@@ -27,6 +27,8 @@ export class AppComponent {
     this.authService.logout();
   }
 
+  // DOM Related
+
   resize(event: any) {
     if (window.innerWidth >= 768) {
       this.isCollapsed = true;

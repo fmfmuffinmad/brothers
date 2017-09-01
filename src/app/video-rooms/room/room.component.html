@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-lg-8">
+    <h1 *ngIf="loading">Loading...</h1>
+    <youtube-player
+      [videoId]="id"
+      (ready)="savePlayer($event)"
+      (change)="onStateChange($event)"
+      [width]="width"
+      [height]="height"
+      *ngIf="roomReady"
+    ></youtube-player>
+    <div class="btn-group" role="group" style="padding-bottom: 15px">
+      <!--<button type="button" class="btn btn-outline-primary" (click)="playVideo()">Play</button>-->
+      <button type="button" class="btn btn-outline-danger" (click)="addVideo(vidlink)">Add Video</button>
+      <input type="text"
+             placeholder="Paste YT Link Here"
+             id="add-video"
+             name="add-video"
+             #vidlink
+             NgModel>
+    </div>
+    <div class="btn-group" role="group" style="padding-bottom: 15px" *ngIf="!loading">
+      <button type="button" class="btn btn-outline-primary" (click)="previousVideo()">Previous Video</button>
+      <button type="button" class="btn btn-outline-primary" (click)="nextVideo()">Next Video</button>
+    </div>
+    <hr>
+    <label for="url">Link da sala</label>
+    <div class="input-group">
+      <input type="url"
+             class="form-control"
+             id="url"
+             name="url"
+             [value]="roomLink" #rl>
+      <button [class]="copiado ? 'input-group-addon btn-success' : 'input-group-addon btn-primary'"
+              type="button"
+              [ngxClipboard]="rl"
+              (click)="copiado = true">{{ copiado ? 'Copied' : 'Copy'}}</button>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <button *ngIf="!loading" [class]="specReady? 'btn btn-success' : 'btn btn-primary'" id="btnReady" (click)="setSpecReady()">Ready?</button>
+    <accordion>
+      <accordion-group heading="Room Users" class="test" [isOpen]="true">
+        <div class="user-list">
+          <div class="card user-card" *ngFor="let spec of specs">
+            <div class="card-block">
+              <div class="spec-name">
+                <img [src]="spec.photo ? spec.photo : 'assets/anon.png'" alt="Photo" class="rounded-circle user-pic">
+                <strong>
+                  {{spec.name ? spec.name : 'Anon'}}
+                </strong>
+                <br>
+                <span [class]="spec.isReady ? 'badge badge-success' : 'badge badge-primary'">ready</span>
+                <span class="badge badge-info">sync</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <accordion>
+      <accordion-group heading="Video List" class="test" [isOpen]="true">
+        <div *ngFor="let video of videoList">
+          <div [class]="video.id === id ? 'card card-inverse' : 'card'">
+            <div class="card-block">
+              <div class="media">
+                <img [src]="video.thumbnail" alt="video thumbnail">
+                <div class="media-body card-text">
+                  {{video.title}}
+                </div>
+              </div>
+            </div>
+            <div class="card-block" *ngIf="video.id !== id">
+              <span class="badge badge-danger" (click)="removeFromVideoList(video)">remove</span>
+              <span class="badge badge-success" (click)="changeRoomVideo(video.id)">play</span>
+              <span class="badge badge-info" (click)="moveVideo('up', video.id, video)">Move up</span>
+              <span class="badge badge-info" (click)="moveVideo('down', video.id, video)">Move down</span>
+            </div>
+          </div>
+        </div>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>
+<!--<div class="card">-->
+  <!--<div class="card-block">-->
+    <!--<div class="card-title">-->
+      <!--<h2>Status do video e id</h2>-->
+    <!--</div>-->
+    <!--<div class="card-text">-->
+      <!--<p>{{ytEvent}}</p>-->
+      <!--<p>{{id}}</p>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<img [src]="thumb" alt="">-->

@@ -1,0 +1,20 @@
+<!--<p>-->
+  <!--<button-->
+    <!--class="btn btn-primary"-->
+    <!--[routerLink]="['/video-rooms/room']">-->
+    <!--Ir para a sala-->
+  <!--</button>-->
+  <!--<button-->
+    <!--class="btn btn-primary"-->
+    <!--[routerLink]="['/video-rooms/room/', 'Dv_5An-OvCk']">-->
+    <!--Ir para a sala com outro video-->
+  <!--</button>-->
+<!--</p>-->
+<form #f1="ngForm" (ngSubmit)="goToRoom(f1)" ngNativeValidate>
+  <div class="form-group">
+    <label for="urlinput">Criar sala - https://www.youtube.com/watch?v=Hqo4xDVmsbk</label>
+    <input type="text" class="form-control" id="urlinput" name="urlinput" placeholder="Paste YouTube link here" required ngModel>
+    <button class="btn btn-primary">Ir para a sala com este video</button>
+  </div>
+</form>
+
